@@ -1,24 +1,5 @@
-# このコードをコピペしてrubyファイルに貼り付け、そのファイルをirbでrequireして実行しましょう。
-
-# 例
-
-# irb
-# require '/Users/shibatadaiki/work_shiba/full_stack/sample.rb'
-# （↑のパスは、自動販売機ファイルが入っているパスを指定する）
-
-# 初期設定（自動販売機インスタンスを作成して、vmという変数に代入する）
-# vm = VendingMachine.new
-
-# 作成した自動販売機に100円を入れる
-# vm.slot_money (100)
-
-# 作成した自動販売機に入れたお金がいくらかを確認する（表示する）
-# vm.current_slot_money
-
-# 作成した自動販売機に入れたお金を返してもらう
-# vm.return_money
-
-#Juice.new(name: "コーラ", price: 120, count: 5)
+require "./drink"
+require "./money"
 
 
 class VendingMachine
@@ -26,12 +7,13 @@ class VendingMachine
     # ステップ１　扱えないお金の例コード
     # 10円玉、50円玉、100円玉、500円玉、1000円札を１つずつ投入できる。
     MONEY = [10, 50, 100, 500, 1000].freeze
-  
+    
     # （自動販売機に投入された金額をインスタンス変数の @slot_money に代入する）
     def initialize
       # 最初の自動販売機に入っている金額は0円
       @slot_money = 0
-      @stock_drinks = [{name:"コーラ", price: 120,count: 5}]
+      @drinks = []
+      5.times { @drinks << Drink.new("コーラ", 120)}
     end
   
     # 投入金額の総計を取得できる。
@@ -54,20 +36,7 @@ class VendingMachine
       end
     end
 
-
-    def add
-      @stock_drinks << {name: "オレンジ",price:100, count: 3}
-    end
-
-    #表示
-    def show 
-      @stock_drinks.each do |drink|
-        puts "#{drink[:price]}円の#{drink[:name]}は#{drink[:count]}個です。"
-      end
-    end
-    
   
-    # 払い戻し操作を行うと、投入金額の総計を釣り銭として出力する。
     def return_money 
       slot_money = @slot_money
       # 自動販売機に入っているお金を0円に戻す
@@ -75,4 +44,32 @@ class VendingMachine
       # 返すお金の金額を表示する
       slot_money
     end
-  end
+
+    #在庫の数を返す
+    def count(name)
+      count = 0
+      @drinks.each do |drink|
+        count += 1 if drink.name == name
+      end
+      count
+    end
+    
+    #格納されているジュースの情報（値段と名前と個数）を取得できる。
+    def data_juice
+      added_names = []
+      results = []
+       @drinks.map {|drink| drink.data}.each do |k,v|
+        names << k
+         if names.count(k) == 1
+            results <<  k
+         end
+       end 
+       results
+    end
+
+end
+
+
+  # 初期設定（自動販売機インスタンスを作成して、vmという変数に代入する）
+ vm = VendingMachine.new
+ p vm.data_juice

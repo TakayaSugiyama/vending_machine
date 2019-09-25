@@ -99,6 +99,7 @@ class VendingMachine
 
    #ジュース値段以上の投入金額が投入されている条件下で購入操作を行うと、ジュースの在庫を減らし、売り上げ金額を増やす。
    def buy(name)
+      last_money = 0
       if self.count(name) > 0 && @slot_money >= self.price(name)
         count = 0
         @sales +=  self.price(name)
@@ -109,9 +110,13 @@ class VendingMachine
              count += 1
           end
         end
-        {"釣り銭": @slot_money, "購入商品": name}
+        last_money = @slot_money
+        @slot_money = 0
+        {"釣り銭": last_money, "購入商品": name}
       else 
-          "買えませんでした。"
+        last_money = @slot_money
+        @slot_money = 0
+        {"釣り銭": last_money}
       end
    end
 

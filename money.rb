@@ -23,7 +23,7 @@ module  MoneyModule
  #ジュース値段以上の投入金額が投入されている条件下で購入操作を行うと、ジュースの在庫を減らし、売り上げ金額を増やす。
  def buy(name)
     last_money = 0
-    if self.count(name) > 0 && @slot_money >= self.price(name)
+    if self.count_drinks(name) > 0 && @slot_money >= self.price(name)
       count = 0
       @sales +=  self.price(name)
       @slot_money -=  self.price(name)

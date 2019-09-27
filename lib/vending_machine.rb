@@ -1,6 +1,6 @@
-require "./drink"
-require "./money"
-require "./stock"
+require "./lib/drink"
+require "./lib/money"
+require "./lib/stock"
 
 class VendingMachine
    attr_reader :sales

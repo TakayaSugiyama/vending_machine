@@ -1,5 +1,6 @@
 require "minitest/autorun"
 require "minitest/reporters"
+Minitest::Reporters.use!
 require "./lib/drink"
 require "./lib/vending_machine"
 require "./lib/money"
@@ -11,5 +12,5 @@ class VendingMachineTest < Minitest::Test
   def test_vending_machine 
     assert VendingMachine.new
   end
-  
+
 end

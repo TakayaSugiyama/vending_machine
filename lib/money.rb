@@ -1,13 +1,4 @@
 module  MoneyModule 
-  
-  def return_money 
-    slot_money = @slot_money
-    # 自動販売機に入っているお金を0円に戻す
-    @slot_money = 0
-    # 返すお金の金額を表示する
-    slot_money
-  end
-
 
  #値段を返す
  def price(buy_drink_name)

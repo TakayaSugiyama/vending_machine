@@ -37,6 +37,16 @@ class VendingMachine
       end
     end
 
+     
+  def return_money 
+    slot_money = @slot_money
+    # 自動販売機に入っているお金を0円に戻す
+    @slot_money = 0
+    # 返すお金の金額を表示する
+    slot_money
+  end
+
+
    #投入金額、在庫の点で購入可能なドリンクのリストを表示する。
    def drink_lists
       results = []

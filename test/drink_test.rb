@@ -11,4 +11,8 @@ class DrinkTest < Minitest::Test
   def test_drink 
     assert @drink
   end
+
+  def test_to_h 
+    assert_equal @drink.to_h , {name: "リラックマ茶", price: 1000}
+  end
 end

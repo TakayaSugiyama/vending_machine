@@ -16,6 +16,15 @@ class VendingMachineTest < Minitest::Test
     assert @vm
   end
 
+  def test_slot_money  
+    assert_equal @vm.slot_money(1000), "1000円を投入しました。"
+  end
+
+  def test_return_money 
+    @vm.slot_money(1000)
+    assert_equal @vm.return_money, 1000
+  end
+
 
   #100円は受け入れる, 100000円は受け入れない
   def test_current_slot_money 

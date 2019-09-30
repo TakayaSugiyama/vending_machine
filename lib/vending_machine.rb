@@ -32,6 +32,7 @@ class VendingMachine
       # 自動販売機にお金を入れる
         @slot_money += money
         #nil
+        "#{@slot_money}円を投入しました。"
       else
         money
       end

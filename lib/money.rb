@@ -6,7 +6,7 @@ module  MoneyModule
   self.data_juice.each do |data|
        drink_price += data[:price].to_i  if buy_drink_name == data[:name].to_s 
   end
-  if  drink_price   != 0
+  if  drink_price  != 0
     drink_price
   else 
     "在庫がありません"

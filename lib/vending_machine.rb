@@ -51,9 +51,7 @@ class VendingMachine
    def drink_lists
       results = []
       self.data_juice.each do |data|
-        data.each do |name,price|
-           results << name.to_s  if @slot_money >= price.to_i
-        end
+        results << data[:name]  if @slot_money >= data[:price]
       end
       results
    end

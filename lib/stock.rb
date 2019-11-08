@@ -21,8 +21,8 @@ module StockModule
      results
   end
 
-    #コーラを買えるかどうかを返す
-    def buy_coke?
+  #コーラを買えるかどうかを返す
+  def buy_coke?
     if @slot_money >= 120  && self.count_drinks("コーラ") > 0
       "買えます"
     else 
@@ -34,4 +34,5 @@ module StockModule
    def add(name,price,count)
     count.times {@drinks << Drink.new(name,price) }
    end
+   
 end

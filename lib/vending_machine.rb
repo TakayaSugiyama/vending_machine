@@ -14,7 +14,7 @@ class VendingMachine
       @slot_money = 0
       @sales = 0
       @drinks = []
-      5.times { @drinks << Drink.new("コーラ", 120)}
+      5.times { @drinks << Drink.new("コーラ")}
     end
   
     # 投入金額の総計を取得できる。

@@ -17,9 +17,9 @@ class StockTest < Minitest::Test
   end
 
   def test_add
-    @vm.add("オレンジ", 150, 10)
+    @vm.add("水", 10)
     assert_equal  @vm.data_juice, [{name: "コーラ", price: 120},
-                                   {name: "オレンジ", price: 150}]
+                                   {name: "水", price: 100}]
   end
 
   def test_count_drinks

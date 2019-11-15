@@ -25,10 +25,15 @@ module StockModule
     end
   end
 
+  #購入可能なドリンクを出力する
+  def purchasable_drink_list
+    stocked_drinks_name.uniq.reject {|drink_name| current_slot_money <= Drink.how_match?(drink_name)}
+  end
+
   #ドリンクを追加する( ドリンク名, 追加するドリンクの数 ) 
   def add_drink(drink_name,drink_count)
     if Drink::DRINKLIST.keys.include?(drink_name) && drink_count.to_i > 0
-      drink_count.to_i.times {Drink.new(drink_name)}
+      drink_count.to_i.times {@drinks << Drink.new(drink_name)}
     else  
       "正常に追加出来ませんでした"
     end

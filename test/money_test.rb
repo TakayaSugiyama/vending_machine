@@ -11,14 +11,14 @@ class MoneyTest < Minitest::Test
       @vm = VendingMachine.new
    end
    
-   def test_drink_price
-    assert_equal @vm.drink_price("コーラ"), 120 
+   def test_how_mach?
+    assert_equal @vm.how_mach?("コーラ"), 120 
     assert_equal @vm.drink_price("水"), 100
     assert_equal @vm.drink_price("レッドブル"), 200
     assert_equal @vm.drink_price("オレンジ"), "在庫がありません"
    end
 
-   def test_buy
+   def test_purchase
      @vm.slot_money 1000
      assert_equal @vm.buy("コーラ"), {"釣り銭": 880, "購入商品": "コーラ"}
    end

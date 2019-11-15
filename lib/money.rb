@@ -1,27 +1,33 @@
 module  MoneyModule 
-
- #値段を返す
- def drink_price(name) 
-    drinks = {"コーラ" => 120, "水" => 100, "レッドブル" => 200}
-    drinks.keys.include?(name) ? drinks[name] : "在庫がありません"
- end
-
- #ジュース値段以上の投入金額が投入されている条件下で購入操作を行うと、ジュースの在庫を減らし、売り上げ金額を増やす。
- def buy(name)
-    if self.count_drinks(name) > 0 && @slot_money >= self.drink_price(name)
-      count = 0
-      @sales +=  self.drink_price(name)
-      @slot_money -=  self.drink_price(name)
-      @drinks.each do |drink|
-        if drink.drink_to_hash[:name] == name 
-           @drinks.delete(drink) if count == 0
-           count += 1
-        end
-      end
-      {"釣り銭": self.return_money, "購入商品": name}
-    else 
-      {"釣り銭": self.return_money}
-    end
-  end
   
+    MONEY = [10, 50, 100, 500, 1000].freeze
+    # 投入金額の総計を取得できる。
+    def current_slot_money
+      # 自動販売機に入っているお金を表示する
+      @slot_money
+    end
+  
+    # 10円玉、50円玉、100円玉、500円玉、1000円札を１つずつ投入できる。
+    # 投入は複数回できる。
+    def slot_money(money)
+      # 想定外のもの（１円玉や５円玉。千円札以外のお札、そもそもお金じゃないもの（数字以外のもの）など）
+      # が投入された場合は、投入金額に加算せず、それをそのまま釣り銭としてユーザに出力する。
+      if MONEY.include?(money)
+      # 自動販売機にお金を入れる
+        @slot_money += money
+        "#{money}円を投入しました。"
+      else
+        "#{money}円は投入できませんでした"
+      end
+    end
+
+     
+    def return_money 
+      slot_money = @slot_money
+      # 自動販売機に入っているお金を0円に戻す
+      @slot_money = 0
+      # 返すお金の金額を表示する
+      slot_money
+    end
+    
 end

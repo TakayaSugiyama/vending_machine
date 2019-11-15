@@ -3,7 +3,6 @@ require "minitest/reporters"
 Minitest::Reporters.use!
 require "./lib/drink"
 require "./lib/vending_machine"
-require "./lib/money"
 require "./lib/stock"
 
 

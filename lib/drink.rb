@@ -11,5 +11,5 @@ class Drink
   def self.how_match?(name)
     DRINKLIST.keys.include?(name) ? DRINKLIST[name] : "在庫がありません"
   end
-
+  
 end

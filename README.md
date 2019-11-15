@@ -81,7 +81,7 @@
  
  - 現在の売上金額を取得できる。 
  ```
-  vm.return_sales
+  vm.sales
  ```
 
 

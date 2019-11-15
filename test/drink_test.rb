@@ -16,9 +16,9 @@ class DrinkTest < Minitest::Test
     assert @redbule
   end
 
-  def test_to_hash
-    assert_equal @water.to_hash , {name: "水", price: 100}
-    assert_equal @coke.to_hash , {name: "コーラ", price: 120}
-    assert_equal @redbule.to_hash , {name: "レッドブル", price: 200}
+  def test_drink_to_hash
+    assert_equal @water.drink_to_hash , {name: "水", price: 100}
+    assert_equal @coke.drink_to_hash , {name: "コーラ", price: 120}
+    assert_equal @redbule.drink_to_hash , {name: "レッドブル", price: 200}
   end
 end

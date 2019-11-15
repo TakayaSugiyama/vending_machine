@@ -13,7 +13,7 @@ class Drink
   end
   
   #ハッシュ化
-  def to_hash
+  def drink_to_hash
    {name: @name, price: @price}
   end
 end

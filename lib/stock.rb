@@ -3,7 +3,7 @@ module StockModule
   def count_drinks(name)
     count = 0
     @drinks.each do |drink|
-      count += 1 if drink.to_hash[:name] == name
+      count += 1 if drink.drink_to_hash[:name] == name
     end
     count
   end
@@ -12,7 +12,7 @@ module StockModule
   def data_juice
     added_names = []
     results = []
-     @drinks.map {|drink| drink.to_hash}.each do |data|
+     @drinks.map {|drink| drink.drink_to_hash}.each do |data|
       added_names << data[:name]
        if added_names.count(data[:name]) == 1
           results <<  data

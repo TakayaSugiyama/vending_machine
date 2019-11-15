@@ -20,7 +20,7 @@ module  MoneyModule
       @sales +=  self.drink_price(name)
       @slot_money -=  self.drink_price(name)
       @drinks.each do |drink|
-        if drink.to_hash[:name] == name 
+        if drink.drink_to_hash[:name] == name 
            @drinks.delete(drink) if count == 0
            count += 1
         end

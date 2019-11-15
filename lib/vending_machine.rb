@@ -3,7 +3,7 @@ require "./lib/money"
 require "./lib/stock"
 
 class VendingMachine
-  attr_reader :sales
+  attr_reader :sales, :drinks
   include MoneyModule 
   include StockModule
 

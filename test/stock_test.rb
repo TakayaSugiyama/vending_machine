@@ -4,32 +4,40 @@ Minitest::Reporters.use!
 require "./lib/drink"
 require "./lib/vending_machine"
 require "./lib/stock"
+require "./lib/money"
 
 
 class StockTest < Minitest::Test 
   def setup 
     @vm  = VendingMachine.new
   end
-
-  def test_juice_info 
-    assert_equal @vm.juice_info, [{name: "コーラ", price: 120}]
+  
+  def test_purchase
+   @vm.slot_money 500
+   assert_equal  @vm.purchase("コーラ"),{"釣り銭": 380, 
+    "購入商品": "コーラ"}
+   assert_equal  @vm.purchase("コーラ"),  {"釣り銭": 0}
   end
 
-  def test_add
-    @vm.add("水", 10)
-    assert_equal  @vm.juice_info, [{name: "コーラ", price: 120},
-                                   {name: "水", price: 100}]
+  def test_can_purchase_coke?
+    @vm.slot_money 500
+    assert_equal @vm.can_purchase_coke? ,"買えます"
+    @vm.return_money 
+    assert_equal @vm.can_purchase_coke? ,"買えません"
   end
 
-  def test_count_drinks
-    assert_equal @vm.count_drinks("コーラ"), 5
+  def test_add_drink
+    @vm.add_drink("水", 2)
+    @vm.add_drink("レッドブル", 4)
+    assert_equal @vm.stocked_drinks_name.uniq , %w(コーラ  水 レッドブル)
   end
 
-
-  def test_buy_coke? 
-    assert_equal @vm.buy_coke? , "買えません"
-    @vm.slot_money 1000
-    assert_equal @vm.buy_coke? , "買えます"
+  def test_purchasable_drink_list
+    @vm.add_drink("水", 2)
+    @vm.slot_money 100
+    assert_equal @vm.purchasable_drink_list , %w(水)
+    @vm.slot_money 100
+    assert_equal @vm.purchasable_drink_list, %w(コーラ 水)
   end
 
 end

@@ -29,5 +29,9 @@ module  MoneyModule
       # 返すお金の金額を表示する
       slot_money
     end
+
+    def return_sales 
+      sales
+    end
     
 end

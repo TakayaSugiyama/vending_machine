@@ -9,6 +9,7 @@ require "./lib/stock"
 class MoneyTest < Minitest::Test 
    def setup 
       @vm = VendingMachine.new
+      @vm.slot_money(1000)
    end
    
    def test_slot_money  
@@ -16,18 +17,23 @@ class MoneyTest < Minitest::Test
     end
   
     def test_return_money 
-      @vm.slot_money(1000)
       assert_equal @vm.return_money, 1000
     end
   
   
     #100円は受け入れる, 100000円は受け入れない
     def test_current_slot_money 
+      @vm.return_money 
       @vm.slot_money(100)
       assert_equal @vm.current_slot_money, 100
       @vm.return_money 
       @vm.slot_money(100000) 
       assert_equal @vm.current_slot_money, 0
+    end
+
+    def test_return_sales  
+      @vm.purchase("コーラ")
+      assert_equal @vm.return_sales, 120
     end
 
 end

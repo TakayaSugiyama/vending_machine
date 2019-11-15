@@ -1,16 +1,13 @@
 module  MoneyModule 
 
  #値段を返す
- def drink_price(buy_drink_name)
-  drink_price = 0
-  self.data_juice.each do |data|
-       drink_price += data[:price].to_i  if buy_drink_name == data[:name].to_s 
-  end
-  if  drink_price  != 0
-    drink_price
-  else 
-    "在庫がありません"
-  end
+ def drink_price(name) 
+    drink_names = juice_info.map{|drink| drink[:name]}
+    if drink_names.include?(name)
+      juice_info.map{|info| info[:price]}.first
+    else  
+      "在庫がありません"
+    end
  end
 
  #ジュース値段以上の投入金額が投入されている条件下で購入操作を行うと、ジュースの在庫を減らし、売り上げ金額を増やす。

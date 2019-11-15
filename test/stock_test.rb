@@ -12,13 +12,13 @@ class StockTest < Minitest::Test
     @vm  = VendingMachine.new
   end
 
-  def test_data_juice 
-    assert_equal @vm.data_juice, [{name: "コーラ", price: 120}]
+  def test_juice_info 
+    assert_equal @vm.juice_info, [{name: "コーラ", price: 120}]
   end
 
   def test_add
     @vm.add("水", 10)
-    assert_equal  @vm.data_juice, [{name: "コーラ", price: 120},
+    assert_equal  @vm.juice_info, [{name: "コーラ", price: 120},
                                    {name: "水", price: 100}]
   end
 

@@ -9,16 +9,8 @@ module StockModule
   end
 
   #格納されているジュースの情報（値段と名前）を取得できる。
-  def data_juice
-    added_names = []
-    results = []
-     @drinks.map {|drink| drink.drink_to_hash}.each do |data|
-      added_names << data[:name]
-       if added_names.count(data[:name]) == 1
-          results <<  data
-       end
-     end 
-     results
+  def juice_info
+    @drinks.map {|drink| {name: drink.name, price: drink.price} }.uniq
   end
 
   #コーラを買えるかどうかを返す

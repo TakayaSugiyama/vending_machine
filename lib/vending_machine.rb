@@ -50,11 +50,7 @@ class VendingMachine
 
    #投入金額、在庫の点で購入可能なドリンクのリストを表示する。
    def drink_lists
-      results = []
-      self.data_juice.each do |data|
-        results << data[:name]  if @slot_money >= data[:price]
-      end
-      results
+     @drinks.each{|drink| drink.price <= @slot_money}.map{|data| data.name}.uniq
    end
 
 end

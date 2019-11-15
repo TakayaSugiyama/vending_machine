@@ -1,4 +1,5 @@
 class Drink 
+  attr_reader :name, :price
   def initialize(name)
     @name = name 
     if name == 'コーラ'

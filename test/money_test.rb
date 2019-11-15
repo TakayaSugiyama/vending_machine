@@ -13,7 +13,9 @@ class MoneyTest < Minitest::Test
    
    def test_drink_price
     assert_equal @vm.drink_price("コーラ"), 120 
-    assert_equal @vm.drink_price("水"), "在庫がありません"
+    assert_equal @vm.drink_price("水"), 100
+    assert_equal @vm.drink_price("レッドブル"), 200
+    assert_equal @vm.drink_price("オレンジ"), "在庫がありません"
    end
 
    def test_buy

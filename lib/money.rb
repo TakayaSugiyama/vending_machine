@@ -9,9 +9,6 @@ module  MoneyModule
     end
 
     def return_money 
-      slot_money = @slot_money
-      @slot_money = 0
-      slot_money
+      slot_money, @slot_money  =  @slot_money , 0  ;  slot_money
     end
-
 end

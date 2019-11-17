@@ -19,8 +19,4 @@ module  MoneyModule
       slot_money
     end
 
-    def return_sales 
-      sales
-    end
-    
 end

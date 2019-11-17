@@ -18,14 +18,7 @@ class StockTest < Minitest::Test
     "購入商品": "コーラ"}
    assert_equal  @vm.purchase("コーラ"),  {"釣り銭": 0}
   end
-
-  def test_can_purchase_coke?
-    @vm.slot_money 500
-    assert_equal @vm.can_purchase_coke? ,"買えます"
-    @vm.return_money 
-    assert_equal @vm.can_purchase_coke? ,"買えません"
-  end
-
+  
   def test_add_drink
     @vm.add_drink("水", 2)
     @vm.add_drink("レッドブル", 4)

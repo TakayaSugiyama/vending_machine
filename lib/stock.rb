@@ -2,11 +2,7 @@ module StockModule
   def stocked_drinks_name
     @drinks.map(&:name)
   end
-
-  def can_purchase_coke?
-    current_slot_money >= 120 && stocked_drinks_name.include?("コーラ") ?  "買えます": "買えません"
-  end
-
+  
   def purchase(drink_name) 
     if stocked_drinks_name.include?(drink_name) && current_slot_money  >= Drink.how_match?(drink_name)
       @drinks.delete_at( stocked_drinks_name.find_index(drink_name) )

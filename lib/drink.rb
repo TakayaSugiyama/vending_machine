@@ -7,7 +7,6 @@ class Drink
     @price = DRINKLIST[name]
   end
   
-  #値段を返す
   def self.how_match?(name)
     DRINKLIST.keys.include?(name) ? DRINKLIST[name] : "在庫がありません"
   end

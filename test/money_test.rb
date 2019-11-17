@@ -31,9 +31,4 @@ class MoneyTest < Minitest::Test
       assert_equal @vm.current_slot_money, 0
     end
 
-    def test_return_sales  
-      @vm.purchase("コーラ")
-      assert_equal @vm.return_sales, 120
-    end
-
 end

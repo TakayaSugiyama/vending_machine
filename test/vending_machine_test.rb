@@ -10,7 +10,6 @@ class VendingMachineTest < Minitest::Test
     @vm = VendingMachine.new
   end
 
-  #クラスが作れるかどうか
   def test_vending_machine 
     assert @vm
   end

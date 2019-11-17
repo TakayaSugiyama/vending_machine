@@ -10,10 +10,9 @@ class VendingMachine
   def initialize
     @slot_money = 0
     @sales = 0
-    @drinks = []
-    5.times { @drinks << Drink.new("コーラ")}
-  end
-
+    @drinks = Array.new(5,Drink.new("コーラ"))
+  end 
+  
 end
 
 

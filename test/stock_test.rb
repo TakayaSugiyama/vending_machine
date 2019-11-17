@@ -22,10 +22,10 @@ class StockTest < Minitest::Test
   def test_add_drink
     @vm.add_drink("水", 2)
     @vm.add_drink("レッドブル", 4)
-    assert_equal @vm.stocked_drink_names.uniq , %w(コーラ  水 レッドブル)
-    assert_equal @vm.stocked_drink_names.count("コーラ"), 5
-    assert_equal @vm.stocked_drink_names.count("水"), 2
-    assert_equal @vm.stocked_drink_names.count("レッドブル"), 4
+    assert_equal @vm.drinks.map(&:name).uniq , %w(コーラ  水 レッドブル)
+    assert_equal @vm.drinks.map(&:name).count("コーラ"), 5
+    assert_equal @vm.drinks.map(&:name).count("水"), 2
+    assert_equal @vm.drinks.map(&:name).count("レッドブル"), 4
   end
 
   def test_purchasable_drink_list

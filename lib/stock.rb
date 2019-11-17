@@ -12,11 +12,11 @@ module StockModule
   #ドリンクを購入する
   def purchase(drink_name) 
     #ドリンクの在庫ある? かつ ドリンクを買うお金ある?
-    if stocked_drinks_name.include?(drink_name) && @slot_money >= Drink.how_match?(drink_name)
+    if stocked_drinks_name.include?(drink_name) && current_slot_money  >= Drink.how_match?(drink_name)
       #あったからドリンクの在庫を１つ削除する
       @drinks.delete_at( stocked_drinks_name.find_index(drink_name) )
       #そして売上をドリンク代、増やす。
-      @sales += Drink::DRINKLIST[drink_name] 
+      @sales += Drink.how_match?(drink_name)
       #お金を減らす
       @slot_money -= @sales  
       #釣り銭と購入商品を返す。

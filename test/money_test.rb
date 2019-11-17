@@ -25,10 +25,10 @@ class MoneyTest < Minitest::Test
     def test_current_slot_money 
       @vm.return_money 
       @vm.slot_money(100)
-      assert_equal @vm.current_slot_money, 100
+      assert_equal @vm.having_money, 100
       @vm.return_money 
       @vm.slot_money(100000) 
-      assert_equal @vm.current_slot_money, 0
+      assert_equal @vm.having_money, 0
     end
 
 end

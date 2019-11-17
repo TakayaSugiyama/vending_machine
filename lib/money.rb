@@ -5,12 +5,7 @@ module  MoneyModule
     end
 
     def slot_money(money)
-      if MONEY.include?(money)
-        @slot_money += money
-        "#{money}円を投入しました。"
-      else
-        "#{money}円は投入できませんでした"
-      end
+      MONEY.include?(money) ? ( @slot_money += money ; "#{money}円を投入しました。") :  "#{money}円は投入できませんでした"
     end
 
     def return_money 

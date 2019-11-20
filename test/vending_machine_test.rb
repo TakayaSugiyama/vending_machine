@@ -4,14 +4,12 @@ Minitest::Reporters.use!
 require "./lib/drink"
 require "./lib/vending_machine"
 
-class VendingMachineTest < Minitest::Test 
-
-  def setup 
+class VendingMachineTest < Minitest::Test
+  def setup
     @vm = VendingMachine.new
   end
 
-  def test_vending_machine 
+  def test_vending_machine
     assert @vm
   end
-  
 end
